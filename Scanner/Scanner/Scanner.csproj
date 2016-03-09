@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharAnalizeLinks\BasicMathLink.cs" />
+    <Compile Include="CharAnalizeLinks\BracketsLink.cs" />
+    <Compile Include="CharAnalizeLinks\HeadLink.cs" />
+    <Compile Include="CharAnalizeLinks\LinkBase.cs" />
+    <Compile Include="CharAnalizeLinks\StringLink.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scanner.cs" />

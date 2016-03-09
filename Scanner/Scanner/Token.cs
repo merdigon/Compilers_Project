@@ -80,7 +80,11 @@ namespace Scanner
         END_OF_LINE,
         BASIC_TYPE,
         MODIF,
-        FLOW_CONTROL
+        FLOW_CONTROL,
+        PRZYPISANIE,
+        //operator porównania
+        OP_POR,
+        OP_LOG
     }
  
 }

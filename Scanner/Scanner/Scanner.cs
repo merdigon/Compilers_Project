@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Scanner.CharAnalizeLinks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +10,23 @@ namespace Scanner
     {
         public string Input { get; set; }
         public List<Token> tokens { get; set; }
+        public HeadLink hLink { get; set; }
 
         public Scanner()
         {
             tokens = new List<Token>();
-            Input = "(34*+\"2.4  .\"class(-4)";
+            Input = "(34*+\"2.4  .\"class&!=>=(-4)";
+            hLink = new HeadLink();
+        }
+
+        void InitAnalizeChain()
+        {
+            hLink = new HeadLink();
+            hLink.SetScanner(this);
+            hLink.RegisterNext(new StringLink());
+            hLink.RegisterNext(new BracketsLink());
+            hLink.RegisterNext(new BasicMathLink());
+
         }
 
         public void AnalizeInput()
@@ -30,65 +43,8 @@ namespace Scanner
         }
 
         public Token AnalizeCharac(char charac, Token tempToken)
-        {
-            if (tempToken != null)
-            {
-                if (tempToken.Type == TokenType.STRING)
-                {
-                    if (charac == '"')
-                    {
-                        tempToken.Value += charac;
-                        AddToken(tempToken);
-                        return null;
-                    }
-                    else
-                    {
-                        tempToken.Value += charac;
-                        return tempToken;
-                    }
-                }
-            }
-            if (charac == '(' || charac == ')' || charac == '{' || charac == '}' || charac == ']' || charac == '[')
-            {
-                if (tempToken != null)
-                {
-                    if(tempToken.Type == TokenType.NIEZNANE)
-                    {
-                        tempToken.Type = Token.CheckUnknownElem(tempToken, true);
-                    }
-                    AddToken(tempToken);
-                }
-                AddToken(new Token() { Type = TokenType.NAWIAS, Value = charac.ToString() });
-                return null;
-            }
-            if (charac == '+')
-            {
-                if (tempToken != null)
-                    AddToken(tempToken);
-                AddToken(new Token() { Type = TokenType.OP_ARYT, Value = "+" });
-                return null;
-            }
-            if (charac == '/')
-            {
-                if (tempToken != null)
-                    AddToken(tempToken);
-                AddToken(new Token() { Type = TokenType.OP_ARYT, Value = "/" });
-                return null;
-            }
-            if (charac == '-')
-            {
-                if (tempToken != null)
-                    AddToken(tempToken);
-                AddToken(new Token() { Type = TokenType.OP_ARYT, Value = "-" });
-                return null;
-            }
-            if (charac == '*')
-            {
-                if (tempToken != null)
-                    AddToken(tempToken);
-                AddToken(new Token() { Type = TokenType.OP_ARYT, Value = "*" });
-                return null;
-            }
+        {            
+            
             if (Char.IsDigit(charac))
             {
                 if (tempToken != null)
@@ -109,7 +65,7 @@ namespace Scanner
                     return new Token() { Type = TokenType.LICZBA_CALKOWITA, Value = charac.ToString() };
                 }
             }
-            if(charac == '.')
+            if (charac == '.')
             {
                 if (tempToken != null)
                 {
@@ -139,19 +95,19 @@ namespace Scanner
                     return null;
                 }
             }
-            if(charac=='"')
+            if (charac == '"')
             {
                 if (tempToken != null)
                 {
-                    AddToken(tempToken);                    
+                    AddToken(tempToken);
                 }
                 return new Token() { Type = TokenType.STRING, Value = charac.ToString() };
             }
-            if(charac==' ')
+            if (charac == ' ')
             {
                 if (tempToken != null)
                 {
-                    if(tempToken.Type==TokenType.NIEZNANE)
+                    if (tempToken.Type == TokenType.NIEZNANE)
                     {
                         tempToken.Type = Token.CheckUnknownElem(tempToken, false);
                         AddToken(tempToken);
@@ -162,6 +118,71 @@ namespace Scanner
                     }
                 }
                 return null;
+            }
+            if (charac == '=')
+            {
+                if (tempToken != null)
+                {
+                    if (tempToken.Type == TokenType.OP_ARYT)
+                    {
+                        tempToken.Type = TokenType.PRZYPISANIE;
+                        tempToken.Value += charac.ToString();
+                        AddToken(tempToken);
+                        return null;
+                    }
+                    if (tempToken.Type == TokenType.PRZYPISANIE && tempToken.Value.Equals("="))
+                    {
+                        tempToken.Type = TokenType.OP_POR;
+                        tempToken.Value += charac.ToString();
+                        AddToken(tempToken);
+                        return null;
+                    }
+                    if (tempToken.Type == TokenType.OP_POR)
+                    {
+                        tempToken.Value += charac.ToString();
+                        AddToken(tempToken);
+                        return null;
+                    }
+                    if (tempToken.Type == TokenType.OP_LOG && tempToken.Value.Equals("!"))
+                    {
+                        tempToken.Type = TokenType.OP_POR;
+                        tempToken.Value += charac.ToString();
+                        AddToken(tempToken);
+                        return null;
+                    }
+                    AddToken(tempToken);
+                }
+                return new Token() { Type = TokenType.PRZYPISANIE, Value = charac.ToString() };
+            }
+            if (charac == '>' || charac == '<')
+            {
+                if (tempToken != null)
+                {
+                    AddToken(tempToken);
+                }
+                return new Token() { Type = TokenType.OP_POR, Value = charac.ToString() };
+            }
+            if (charac == '!')
+            {
+                if (tempToken != null)
+                {
+                    AddToken(tempToken);
+                }
+                return new Token() { Type = TokenType.OP_LOG, Value = charac.ToString() };
+            }
+            if (charac == '|' || charac == '&')
+            {
+                if (tempToken != null)
+                {
+                    if (tempToken.Type == TokenType.OP_LOG && tempToken.Value.Equals(charac.ToString()))
+                    {
+                        tempToken.Value += charac.ToString();
+                        AddToken(tempToken);
+                        return null;
+                    }
+                    AddToken(tempToken);
+                }
+                return new Token() { Type = TokenType.OP_LOG, Value = charac.ToString() };
             }
             if (true)
             {
@@ -192,6 +213,10 @@ namespace Scanner
                 tokToAdd.Type = TokenType.ERROR;
             }
             if (tokToAdd.Type == TokenType.STRING && tokToAdd.Value.Last() != '"')
+            {
+                tokToAdd.Type = TokenType.ERROR;
+            }
+            if (tokToAdd.Type == TokenType.OP_LOG && (tokToAdd.Value.Equals("|") || tokToAdd.Value.Equals("&")))
             {
                 tokToAdd.Type = TokenType.ERROR;
             }
