@@ -23,6 +23,7 @@ namespace Scanner
                 new SpecialElement(){Name="new", AllowBrackets=false},
                 new SpecialElement(){Name="get", AllowBrackets=false},
                 new SpecialElement(){Name="set", AllowBrackets=false},
+                new SpecialElement(){Name="null", AllowBrackets=false},
                 new SpecialElement(){Name="typeof", AllowBrackets=true}};
 
             SpecialElement[] basic_type = new SpecialElement[]{
@@ -49,7 +50,8 @@ namespace Scanner
                 new SpecialElement(){Name="switch", AllowBrackets=true},
                 new SpecialElement(){Name="case", AllowBrackets=false},
                 new SpecialElement(){Name="default", AllowBrackets=false},
-                new SpecialElement(){Name="throw", AllowBrackets=false}
+                new SpecialElement(){Name="throw", AllowBrackets=false},
+                new SpecialElement(){Name="return", AllowBrackets=false}
             };
 
             if((from SpecialElement specEle in modif where specEle.Name.Equals(tok.Value) && (specEle.AllowBrackets || !brackets) select specEle).Count()>0)
@@ -89,7 +91,9 @@ namespace Scanner
         END_OF_CODE_LINE,
         SLASH,
         ONE_LINE_COMMENT,
-        MULTIPLE_LINE_COMMENT
+        MULTIPLE_LINE_COMMENT,
+        CHAR,
+        PRZECINEK
     }
  
 }

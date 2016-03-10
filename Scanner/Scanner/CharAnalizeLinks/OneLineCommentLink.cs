@@ -11,7 +11,7 @@ namespace Scanner.CharAnalizeLinks
         {
             if(tempToken!=null && tempToken.Type==TokenType.ONE_LINE_COMMENT)
             {
-                if(charac == '\n')
+                if (charac == '\n' || charac == '\r')
                 {
                     AddToken(tempToken);
                     AddToken(new Token() { Type = TokenType.END_OF_LINE, Value = charac.ToString() });

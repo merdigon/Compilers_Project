@@ -9,7 +9,7 @@ namespace Scanner.CharAnalizeLinks
     {
         public override Token GetRequest(Token tempToken, char charac)
         {
-            if (charac == '+' || charac == '/' || charac == '-' || charac == '*')
+            if (charac == '+' || charac == '-' || charac == '*')
             {
                 if (tempToken != null)
                 {
@@ -22,8 +22,7 @@ namespace Scanner.CharAnalizeLinks
                     else
                         AddToken(tempToken);
                 }
-                AddToken(new Token() { Type = TokenType.OP_ARYT, Value = charac.ToString() });
-                return null;
+                return new Token() { Type = TokenType.OP_ARYT, Value = charac.ToString() };
             }
 
             return base.GetRequest(tempToken, charac);

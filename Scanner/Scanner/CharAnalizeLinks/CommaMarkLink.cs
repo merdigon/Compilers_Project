@@ -5,21 +5,22 @@ using System.Text;
 
 namespace Scanner.CharAnalizeLinks
 {
-    public class EndOfCodeLineMarkLink : LinkBase
+    public class CommaMarkLink : LinkBase
     {
         public override Token GetRequest(Token tempToken, char charac)
         {
-            if (charac == ';')
+            if (charac == ',')
             {
                 if (tempToken != null)
                 {
                     if (tempToken.Type == TokenType.NIEZNANE)
                     {
-                        tempToken.Type = Token.CheckUnknownElem(tempToken, false);
+                        tempToken.Type = Token.CheckUnknownElem(tempToken, true);
                     }
                     AddToken(tempToken);
+                    AddToken(new Token() { Type = TokenType.PRZECINEK, Value = charac.ToString() });
                 }
-                return new Token() { Type = TokenType.END_OF_CODE_LINE, Value = charac.ToString() };
+                return null;
             }
 
             return base.GetRequest(tempToken, charac);

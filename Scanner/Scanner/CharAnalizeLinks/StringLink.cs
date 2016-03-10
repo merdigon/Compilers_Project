@@ -13,7 +13,7 @@ namespace Scanner.CharAnalizeLinks
             {
                 if (tempToken.Type == TokenType.STRING)
                 {
-                    if (charac == '"' || charac == '\n')
+                    if (charac == '"' && tempToken.Value.Last()!='\\')
                     {
                         tempToken.Value += charac;
                         AddToken(tempToken);

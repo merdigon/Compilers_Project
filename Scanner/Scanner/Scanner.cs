@@ -1,6 +1,7 @@
 ﻿using Scanner.CharAnalizeLinks;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -15,7 +16,12 @@ namespace Scanner
         public Scanner()
         {
             tokens = new List<Token>();
-            Input = "(34*+\"2.4  .\"class&!=>=(-4)";
+            using(StreamReader stR = new StreamReader("C:\\Users\\Szymon\\Desktop\\code.txt"))
+            {
+                Input = stR.ReadToEnd();
+            }
+
+            // = "(34*+\"2.4  .\"class&!=>=(-4)";
             hLink = new HeadLink();
             InitAnalizeChain();
         }
@@ -27,6 +33,7 @@ namespace Scanner
             hLink.RegisterNext(new StringLink());
             hLink.RegisterNext(new MultipleLineCommentLink());
             hLink.RegisterNext(new OneLineCommentLink());
+            hLink.RegisterNext(new CharLink());
 
             hLink.RegisterNext(new BracketsLink());
             hLink.RegisterNext(new BasicMathLink());
@@ -40,6 +47,10 @@ namespace Scanner
             hLink.RegisterNext(new OrAndMarkLink());
             hLink.RegisterNext(new EndOfCodeLineMarkLink());
             hLink.RegisterNext(new SlashMarkLink());
+            hLink.RegisterNext(new EndOfLineLink());
+            hLink.RegisterNext(new IgnoreMarkLink());
+            hLink.RegisterNext(new ApostropheMarkLink());
+            hLink.RegisterNext(new CommaMarkLink());
 
             hLink.RegisterNext(new OtherLink());
         }

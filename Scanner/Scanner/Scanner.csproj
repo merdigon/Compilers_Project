@@ -41,13 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharAnalizeLinks\ApostropheMarkLink.cs" />
     <Compile Include="CharAnalizeLinks\BasicMathLink.cs" />
     <Compile Include="CharAnalizeLinks\BracketsLink.cs" />
+    <Compile Include="CharAnalizeLinks\CharLink.cs" />
+    <Compile Include="CharAnalizeLinks\CommaMarkLink.cs" />
     <Compile Include="CharAnalizeLinks\DigitLink.cs" />
     <Compile Include="CharAnalizeLinks\DotLink.cs" />
     <Compile Include="CharAnalizeLinks\EndOfCodeLineMarkLink.cs" />
+    <Compile Include="CharAnalizeLinks\EndOfLineLink.cs" />
     <Compile Include="CharAnalizeLinks\EqualMarkLink.cs" />
     <Compile Include="CharAnalizeLinks\HeadLink.cs" />
+    <Compile Include="CharAnalizeLinks\IgnoreMarkLink.cs" />
     <Compile Include="CharAnalizeLinks\LinkBase.cs" />
     <Compile Include="CharAnalizeLinks\MoreLessMarkLink.cs" />
     <Compile Include="CharAnalizeLinks\MultipleLineCommentLink.cs" />

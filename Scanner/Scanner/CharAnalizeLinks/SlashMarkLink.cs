@@ -17,11 +17,11 @@ namespace Scanner.CharAnalizeLinks
                     {
                         tempToken.Type = TokenType.ONE_LINE_COMMENT;
                         tempToken.Value += charac.ToString();
+                        return tempToken;
                     }
                     AddToken(tempToken);
                 }
-                AddToken(new Token() { Type = TokenType.SLASH, Value = charac.ToString() });
-                return null;
+                return new Token() { Type = TokenType.SLASH, Value = charac.ToString() };
             }
             
             return base.GetRequest(tempToken, charac);

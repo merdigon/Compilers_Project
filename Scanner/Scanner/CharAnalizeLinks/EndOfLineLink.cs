@@ -5,23 +5,23 @@ using System.Text;
 
 namespace Scanner.CharAnalizeLinks
 {
-    public class EndOfCodeLineMarkLink : LinkBase
+    public class EndOfLineLink : LinkBase
     {
         public override Token GetRequest(Token tempToken, char charac)
         {
-            if (charac == ';')
+            if(charac == '\n')
             {
-                if (tempToken != null)
+                if(tempToken!=null)
                 {
                     if (tempToken.Type == TokenType.NIEZNANE)
                     {
-                        tempToken.Type = Token.CheckUnknownElem(tempToken, false);
+                        tempToken.Type = Token.CheckUnknownElem(tempToken, true);
                     }
                     AddToken(tempToken);
                 }
-                return new Token() { Type = TokenType.END_OF_CODE_LINE, Value = charac.ToString() };
+                return null;
             }
-
+            
             return base.GetRequest(tempToken, charac);
         }
     }
