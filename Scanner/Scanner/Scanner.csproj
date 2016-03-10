@@ -32,8 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Charts.v12.2.Core, Version=12.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v12.2, Version=12.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v12.2.Core, Version=12.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v12.2.Core, Version=12.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v12.2.Core, Version=12.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v12.2.Core, Version=12.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v12.2, Version=12.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v12.2, Version=12.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +69,7 @@
     <Compile Include="CharAnalizeLinks\OneLineCommentLink.cs" />
     <Compile Include="CharAnalizeLinks\OrAndMarkLink.cs" />
     <Compile Include="CharAnalizeLinks\OtherLink.cs" />
+    <Compile Include="CharAnalizeLinks\PunctuationMarkLink.cs" />
     <Compile Include="CharAnalizeLinks\QuotationMarkLink.cs" />
     <Compile Include="CharAnalizeLinks\SlashMarkLink.cs" />
     <Compile Include="CharAnalizeLinks\SpaceLink.cs" />
@@ -67,7 +77,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scanner.cs" />
-    <Compile Include="Token.cs" />
+    <Compile Include="SyntaxColoring.cs" />
+    <Compile Include="Tokens\Token.cs" />
+    <Compile Include="Tokens\TokenManager.cs" />
+    <Compile Include="Tokens\TokenType.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

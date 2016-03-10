@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Scanner.Tokens;
 
 namespace Scanner.CharAnalizeLinks
 {
@@ -24,6 +25,13 @@ namespace Scanner.CharAnalizeLinks
                         tempToken.Value += charac;
                         tempToken.Type = TokenType.ERROR;
                         AddToken(tempToken);
+                        return null;
+                    }
+                    else if (tempToken.Type == TokenType.NIEZNANE)
+                    {
+                        tempToken.Type = TokenManager.CheckUnknownElem(tempToken, false);
+                        AddToken(tempToken);
+                        AddToken(new Token() { Type = TokenType.KROPKA, Value = charac.ToString() });
                         return null;
                     }
                     else

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Scanner.Tokens;
 
 namespace Scanner.CharAnalizeLinks
 {
@@ -11,7 +12,7 @@ namespace Scanner.CharAnalizeLinks
         {
             if(tempToken!=null && tempToken.Type==TokenType.ONE_LINE_COMMENT)
             {
-                if (charac == '\n' || charac == '\r')
+                if (charac == '\n')
                 {
                     AddToken(tempToken);
                     AddToken(new Token() { Type = TokenType.END_OF_LINE, Value = charac.ToString() });

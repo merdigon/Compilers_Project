@@ -11,6 +11,8 @@ namespace Scanner
         {
             Scanner scan = new Scanner();
             scan.AnalizeInput();
+            SyntaxColoring syntColor = new SyntaxColoring(scan.tokens);
+            syntColor.SaveColoredTokenToFile("C:\\Users\\Szymon\\Desktop\\code.html");
             scan.ShowTokens();
             Console.ReadLine();
         }

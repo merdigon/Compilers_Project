@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Scanner.Tokens;
 
 namespace Scanner.CharAnalizeLinks
 {
@@ -15,7 +16,7 @@ namespace Scanner.CharAnalizeLinks
                 {
                     if (tempToken.Type == TokenType.NIEZNANE)
                     {
-                        tempToken.Type = Token.CheckUnknownElem(tempToken, true);
+                        tempToken.Type = TokenManager.CheckUnknownElem(tempToken, true);
                     }
                     AddToken(tempToken);
                     AddToken(new Token() { Type = TokenType.PRZECINEK, Value = charac.ToString() });

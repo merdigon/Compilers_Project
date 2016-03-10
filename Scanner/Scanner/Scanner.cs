@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Scanner.Tokens;
 
 namespace Scanner
 {
@@ -51,6 +52,7 @@ namespace Scanner
             hLink.RegisterNext(new IgnoreMarkLink());
             hLink.RegisterNext(new ApostropheMarkLink());
             hLink.RegisterNext(new CommaMarkLink());
+            hLink.RegisterNext(new PunctuationMarkLink());
 
             hLink.RegisterNext(new OtherLink());
         }

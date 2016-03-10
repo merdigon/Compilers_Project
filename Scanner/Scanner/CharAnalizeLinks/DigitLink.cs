@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Scanner.Tokens;
 
 namespace Scanner.CharAnalizeLinks
 {
@@ -14,6 +15,11 @@ namespace Scanner.CharAnalizeLinks
                 if (tempToken != null)
                 {
                     if (tempToken.Type == TokenType.LICZBA_CALKOWITA || tempToken.Type == TokenType.LICZBA_WYMIERNA)
+                    {
+                        tempToken.Value += charac;
+                        return tempToken;
+                    }
+                    else if(tempToken.Type == TokenType.NIEZNANE)
                     {
                         tempToken.Value += charac;
                         return tempToken;

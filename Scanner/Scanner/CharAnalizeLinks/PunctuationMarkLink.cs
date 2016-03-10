@@ -1,24 +1,24 @@
-﻿using System;
+﻿using Scanner.Tokens;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Scanner.Tokens;
 
 namespace Scanner.CharAnalizeLinks
 {
-    public class MoreLessMarkLink : LinkBase
+    public class PunctuationMarkLink : LinkBase
     {
-        public override Token GetRequest(Token tempToken, char charac)
+        public override Tokens.Token GetRequest(Tokens.Token tempToken, char charac)
         {
-            if (charac == '>' || charac == '<')
+            if (charac == ':')
             {
                 if (tempToken != null)
                 {
                     AddToken(tempToken);
                 }
-                return new Token() { Type = TokenType.OP_POR, Value = charac.ToString() };
+                AddToken(new Token() { Type = TokenType.PUNCTUATIONMARK, Value = charac.ToString() });
+                return null;
             }
-
             return base.GetRequest(tempToken, charac);
         }
     }

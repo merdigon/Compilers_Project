@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Scanner.Tokens;
 
 namespace Scanner.CharAnalizeLinks
 {
@@ -15,15 +16,25 @@ namespace Scanner.CharAnalizeLinks
                 {
                     if (tempToken.Type == TokenType.NIEZNANE)
                     {
-                        tempToken.Type = Token.CheckUnknownElem(tempToken, false);
+                        tempToken.Type = TokenManager.CheckUnknownElem(tempToken, false);
                         AddToken(tempToken);
+                        return new Token() { Type = TokenType.SPACE, Value = charac.ToString() };
+                    }
+                    else if (tempToken.Type == TokenType.SPACE)
+                    {
+                        tempToken.Value += charac.ToString();
+                        return tempToken;
                     }
                     else
                     {
                         AddToken(tempToken);
+                        return new Token() { Type = TokenType.SPACE, Value = charac.ToString() };                        
                     }
                 }
-                return null;
+                else
+                {
+                    return new Token() { Type = TokenType.SPACE, Value = charac.ToString() };
+                }
             }
 
             return base.GetRequest(tempToken, charac);
