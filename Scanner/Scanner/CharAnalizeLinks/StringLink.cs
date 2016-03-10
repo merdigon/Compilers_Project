@@ -13,10 +13,16 @@ namespace Scanner.CharAnalizeLinks
             {
                 if (tempToken.Type == TokenType.STRING)
                 {
-                    if (charac == '"')
+                    if (charac == '"' || charac == '\n')
                     {
                         tempToken.Value += charac;
                         AddToken(tempToken);
+                        return null;
+                    }
+                    else if(charac == '\n')
+                    {
+                        AddToken(tempToken);
+                        AddToken(new Token() { Type = TokenType.END_OF_LINE, Value = charac.ToString() });
                         return null;
                     }
                     else

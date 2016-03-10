@@ -43,8 +43,21 @@
   <ItemGroup>
     <Compile Include="CharAnalizeLinks\BasicMathLink.cs" />
     <Compile Include="CharAnalizeLinks\BracketsLink.cs" />
+    <Compile Include="CharAnalizeLinks\DigitLink.cs" />
+    <Compile Include="CharAnalizeLinks\DotLink.cs" />
+    <Compile Include="CharAnalizeLinks\EndOfCodeLineMarkLink.cs" />
+    <Compile Include="CharAnalizeLinks\EqualMarkLink.cs" />
     <Compile Include="CharAnalizeLinks\HeadLink.cs" />
     <Compile Include="CharAnalizeLinks\LinkBase.cs" />
+    <Compile Include="CharAnalizeLinks\MoreLessMarkLink.cs" />
+    <Compile Include="CharAnalizeLinks\MultipleLineCommentLink.cs" />
+    <Compile Include="CharAnalizeLinks\NegationMarkLink.cs" />
+    <Compile Include="CharAnalizeLinks\OneLineCommentLink.cs" />
+    <Compile Include="CharAnalizeLinks\OrAndMarkLink.cs" />
+    <Compile Include="CharAnalizeLinks\OtherLink.cs" />
+    <Compile Include="CharAnalizeLinks\QuotationMarkLink.cs" />
+    <Compile Include="CharAnalizeLinks\SlashMarkLink.cs" />
+    <Compile Include="CharAnalizeLinks\SpaceLink.cs" />
     <Compile Include="CharAnalizeLinks\StringLink.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

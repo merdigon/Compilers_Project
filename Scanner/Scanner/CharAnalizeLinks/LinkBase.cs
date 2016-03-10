@@ -10,12 +10,7 @@ namespace Scanner.CharAnalizeLinks
         LinkBase Next { get; set; }
 
         Scanner Scanner { get; set; }
-
-        public LinkBase(Scanner scanner)
-        {
-            this.Scanner = scanner;
-        }
-
+        
         public void SetScanner(Scanner scanner)
         {
             this.Scanner = scanner;

@@ -48,7 +48,8 @@ namespace Scanner
                 new SpecialElement(){Name="break", AllowBrackets=false},
                 new SpecialElement(){Name="switch", AllowBrackets=true},
                 new SpecialElement(){Name="case", AllowBrackets=false},
-                new SpecialElement(){Name="default", AllowBrackets=false}
+                new SpecialElement(){Name="default", AllowBrackets=false},
+                new SpecialElement(){Name="throw", AllowBrackets=false}
             };
 
             if((from SpecialElement specEle in modif where specEle.Name.Equals(tok.Value) && (specEle.AllowBrackets || !brackets) select specEle).Count()>0)
@@ -84,7 +85,11 @@ namespace Scanner
         PRZYPISANIE,
         //operator porównania
         OP_POR,
-        OP_LOG
+        OP_LOG,
+        END_OF_CODE_LINE,
+        SLASH,
+        ONE_LINE_COMMENT,
+        MULTIPLE_LINE_COMMENT
     }
  
 }

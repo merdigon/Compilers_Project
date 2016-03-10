@@ -5,25 +5,23 @@ using System.Text;
 
 namespace Scanner.CharAnalizeLinks
 {
-    public class BasicMathLink : LinkBase
+    public class OrAndMarkLink : LinkBase
     {
         public override Token GetRequest(Token tempToken, char charac)
         {
-            if (charac == '+' || charac == '/' || charac == '-' || charac == '*')
+            if (charac == '|' || charac == '&')
             {
                 if (tempToken != null)
                 {
-                    if(charac == '*' && tempToken.Type == TokenType.SLASH)
+                    if (tempToken.Type == TokenType.OP_LOG && tempToken.Value.Equals(charac.ToString()))
                     {
-                        tempToken.Type = TokenType.MULTIPLE_LINE_COMMENT;
                         tempToken.Value += charac.ToString();
-                        return tempToken;
-                    }
-                    else
                         AddToken(tempToken);
+                        return null;
+                    }
+                    AddToken(tempToken);
                 }
-                AddToken(new Token() { Type = TokenType.OP_ARYT, Value = charac.ToString() });
-                return null;
+                return new Token() { Type = TokenType.OP_LOG, Value = charac.ToString() };
             }
 
             return base.GetRequest(tempToken, charac);

@@ -5,24 +5,24 @@ using System.Text;
 
 namespace Scanner.CharAnalizeLinks
 {
-    public class BasicMathLink : LinkBase
+    public class SpaceLink : LinkBase
     {
         public override Token GetRequest(Token tempToken, char charac)
         {
-            if (charac == '+' || charac == '/' || charac == '-' || charac == '*')
+            if (charac == ' ')
             {
                 if (tempToken != null)
                 {
-                    if(charac == '*' && tempToken.Type == TokenType.SLASH)
+                    if (tempToken.Type == TokenType.NIEZNANE)
                     {
-                        tempToken.Type = TokenType.MULTIPLE_LINE_COMMENT;
-                        tempToken.Value += charac.ToString();
-                        return tempToken;
+                        tempToken.Type = Token.CheckUnknownElem(tempToken, false);
+                        AddToken(tempToken);
                     }
                     else
+                    {
                         AddToken(tempToken);
+                    }
                 }
-                AddToken(new Token() { Type = TokenType.OP_ARYT, Value = charac.ToString() });
                 return null;
             }
 
