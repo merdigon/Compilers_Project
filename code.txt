@@ -1,0 +1,11 @@
+else if(charac == '\n')
+{/*a*/
+                        AddToken(tempToken);
+                        AddToken(new Token() { Type = TokenType.END_OF_LINE, Value = charac.ToString() });
+                        return null; //jol
+                    }
+                    else
+                    {
+                        tempToken.Value += charac;
+                        return tempToken;
+                    }
