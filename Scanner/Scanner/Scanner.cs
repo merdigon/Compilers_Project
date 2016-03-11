@@ -13,7 +13,7 @@ namespace Scanner
         public Scanner()
         {
             tokens = new List<Token>();
-            Input = "(34*+\"2.4  .\"-4)";
+            Input = "(34*+\"2.4  .\"class(-4)";
         }
 
         public void AnalizeInput()
@@ -48,20 +48,17 @@ namespace Scanner
                     }
                 }
             }
-
-
-            if (charac == '(')
+            if (charac == '(' || charac == ')' || charac == '{' || charac == '}' || charac == ']' || charac == '[')
             {
                 if (tempToken != null)
+                {
+                    if(tempToken.Type == TokenType.NIEZNANE)
+                    {
+                        tempToken.Type = Token.CheckUnknownElem(tempToken, true);
+                    }
                     AddToken(tempToken);
-                AddToken(new Token() { Type = TokenType.NAWIAS, Value = "(" });
-                return null;
-            }
-            if (charac == ')')
-            {
-                if (tempToken != null)
-                    AddToken(tempToken);
-               AddToken(new Token() { Type = TokenType.NAWIAS, Value = ")" });
+                }
+                AddToken(new Token() { Type = TokenType.NAWIAS, Value = charac.ToString() });
                 return null;
             }
             if (charac == '+')
@@ -152,7 +149,19 @@ namespace Scanner
             }
             if(charac==' ')
             {
-
+                if (tempToken != null)
+                {
+                    if(tempToken.Type==TokenType.NIEZNANE)
+                    {
+                        tempToken.Type = Token.CheckUnknownElem(tempToken, false);
+                        AddToken(tempToken);
+                    }
+                    else
+                    {
+                        AddToken(tempToken);
+                    }
+                }
+                return null;
             }
             if (true)
             {
