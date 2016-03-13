@@ -1,11 +1,11 @@
-﻿using Scanner.Tokens;
+﻿using Compiler.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Scanner
+namespace Compiler.Scanner
 {
     public class SyntaxColoring
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Scanner.Tokens;
+using Compiler.Tokens;
 
-namespace Scanner.CharAnalizeLinks
+namespace Compiler.Scanner.CharAnalizeLinks
 {
     public class OrAndMarkLink : LinkBase
     {

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Scanner")]
+[assembly: AssemblyTitle("Compiler.Tokens")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Scanner")]
+[assembly: AssemblyProduct("Compiler.Tokens")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2a5539bf-430e-4726-a0c9-65f4b2906ee3")]
+[assembly: Guid("3a61bbde-167d-4dc8-96b3-53a7b1cfd5f5")]
 
 // Version information for an assembly consists of the following four values:
 //

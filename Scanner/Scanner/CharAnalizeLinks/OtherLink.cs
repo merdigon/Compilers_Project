@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Scanner.Tokens;
+using Compiler.Tokens;
 
-namespace Scanner.CharAnalizeLinks
+namespace Compiler.Scanner.CharAnalizeLinks
 {
     public class OtherLink : LinkBase
     {
@@ -28,7 +28,7 @@ namespace Scanner.CharAnalizeLinks
                 return new Token() { Type = TokenType.NIEZNANE, Value = charac.ToString() };
             }
 
-            return base.GetRequest(tempToken, charac);
+            //return base.GetRequest(tempToken, charac);
         }
     }
 }

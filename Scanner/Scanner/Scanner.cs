@@ -1,12 +1,12 @@
-﻿using Scanner.CharAnalizeLinks;
+﻿using Compiler.Tokens;
+using Compiler.Scanner.CharAnalizeLinks;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Scanner.Tokens;
 
-namespace Scanner
+namespace Compiler.Scanner
 {
     public class Scanner
     {
