@@ -68,6 +68,7 @@ namespace Compiler.Scanner
             {
                 AddToken(currentToken);
             }
+            CheckErrorBrackets();
         }
 
         public Token AnalizeCharac(char charac, Token tempToken)
@@ -100,5 +101,45 @@ namespace Compiler.Scanner
                 Console.WriteLine(tok.Type.ToString() + " - " + tok.Value);
             }
         }
+
+        public void CheckErrorBrackets()
+        {
+            var bracketsTokens = tokens.Where(p => p.Type == TokenType.NAWIAS);
+            Stack<Token> tokenStack = new Stack<Token>();
+
+            foreach (Token tok in bracketsTokens)
+            {
+                if (tok.Value.Equals("(") || tok.Value.Equals("[") || tok.Value.Equals("{"))
+                    tokenStack.Push(tok);
+                else if(tok.Value.Equals(")"))
+                {
+                    if (!tokenStack.Peek().Value.Equals("("))
+                        tok.Type = TokenType.ERROR;
+                    else
+                        tokenStack.Pop();
+                }
+                else if (tok.Value.Equals("]"))
+                {
+                    if (!tokenStack.Peek().Value.Equals("["))
+                        tok.Type = TokenType.ERROR;
+                    else
+                        tokenStack.Pop();
+                }
+                else if (tok.Value.Equals("}"))
+                {
+                    if (!tokenStack.Peek().Value.Equals("{"))
+                        tok.Type = TokenType.ERROR;
+                    else
+                        tokenStack.Pop();
+                }
+            }
+
+            if (tokenStack.Count > 0)
+            {
+                foreach (Token tok in tokenStack)
+                    tok.Type = TokenType.ERROR;
+            }
+        }
+
     }
 }
