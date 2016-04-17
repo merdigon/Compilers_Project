@@ -3,3 +3,8 @@ C:\Users\Szymon\Documents\GitHub\TKiK_Projekt\Scanner\Compiler.Token\bin\Debug\C
 C:\Users\Szymon\Documents\GitHub\TKiK_Projekt\Scanner\Compiler.Token\obj\Debug\Compiler.Tokens.csprojResolveAssemblyReference.cache
 C:\Users\Szymon\Documents\GitHub\TKiK_Projekt\Scanner\Compiler.Token\obj\Debug\Compiler.Token.dll
 C:\Users\Szymon\Documents\GitHub\TKiK_Projekt\Scanner\Compiler.Token\obj\Debug\Compiler.Token.pdb
+C:\Users\Szymon\Documents\GitHub\Compilers_Project\Scanner\Compiler.Token\bin\Debug\Compiler.Token.dll
+C:\Users\Szymon\Documents\GitHub\Compilers_Project\Scanner\Compiler.Token\bin\Debug\Compiler.Token.pdb
+C:\Users\Szymon\Documents\GitHub\Compilers_Project\Scanner\Compiler.Token\obj\Debug\Compiler.Tokens.csprojResolveAssemblyReference.cache
+C:\Users\Szymon\Documents\GitHub\Compilers_Project\Scanner\Compiler.Token\obj\Debug\Compiler.Token.dll
+C:\Users\Szymon\Documents\GitHub\Compilers_Project\Scanner\Compiler.Token\obj\Debug\Compiler.Token.pdb
