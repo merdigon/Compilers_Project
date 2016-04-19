@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapFileReader", "MapFileReader\MapFileReader.csproj", "{8F86F04F-7375-47F1-BD8E-76E0BE67836F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapFileReader.Scanner", "MapFileReader.Scanner\MapFileReader.Scanner.csproj", "{7CC2E9CC-D5C0-4DB1-B921-0CACC630CA1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapFileReader.Parser", "MapFileReader.Parser\MapFileReader.Parser.csproj", "{9BA2A35B-C087-493E-A354-B159CDEE8781}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7CC2E9CC-D5C0-4DB1-B921-0CACC630CA1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CC2E9CC-D5C0-4DB1-B921-0CACC630CA1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CC2E9CC-D5C0-4DB1-B921-0CACC630CA1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BA2A35B-C087-493E-A354-B159CDEE8781}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA2A35B-C087-493E-A354-B159CDEE8781}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA2A35B-C087-493E-A354-B159CDEE8781}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA2A35B-C087-493E-A354-B159CDEE8781}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

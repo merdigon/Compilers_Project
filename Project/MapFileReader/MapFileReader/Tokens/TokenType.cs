@@ -11,6 +11,7 @@ namespace MapFileReader.Tokens
         OPENING,
         CLOSING,
         VALUE,
-        ERROR
+        ERROR,
+        IGNORE
     }
 }

@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace MapFileReader.KMLObjects
 {
-    public class PlacemarkKML
+    [KMLMarkClass]
+    public class PlacemarkKML : KMLBase
     {
-        [KMLAttribute("name")]
+        [KMLMarkNameAttribute("name")]
         public string Name { get; set; }
         
-        [KMLAttribute("description")]
+        [KMLMarkNameAttribute("description")]
         public string Description { get; set; }
 
-        [KMLAttribute("Point")]
+        [KMLMarkNameAttribute("Point")]
         public PointKML Point { get; set; }
     }
 }

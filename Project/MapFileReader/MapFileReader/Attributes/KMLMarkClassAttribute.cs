@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MapFileReader.Scanner
+namespace MapFileReader.Attributes
 {
-    class Program
+    public class KMLMarkClassAttribute : Attribute
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }

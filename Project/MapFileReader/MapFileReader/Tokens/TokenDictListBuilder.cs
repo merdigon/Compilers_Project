@@ -24,9 +24,13 @@ namespace MapFileReader.Tokens
 
             foreach (Type type in kmlTypes)
             {
+                //jeżeli klasa nie ma atrybutu oznaczającego klasy pliku KML
+                if (type.GetCustomAttributes(true).Where(p => p is KMLMarkClassAttribute).FirstOrDefault() == null)
+                    continue;
+
                 foreach(PropertyInfo pinfo in type.GetProperties())
                 {
-                    KMLAttribute kmlAtribute = (KMLAttribute)((object[])pinfo.GetCustomAttributes(true)).Where(p => p is KMLAttribute).FirstOrDefault();
+                    KMLMarkNameAttribute kmlAtribute = (KMLMarkNameAttribute)((object[])pinfo.GetCustomAttributes(true)).Where(p => p is KMLMarkNameAttribute).FirstOrDefault();
                     if (kmlAtribute != null)
                     {
                         if(!tokenList.Select(p => p.Value).Contains(kmlAtribute.Name))

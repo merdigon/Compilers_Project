@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MapFileReader.Attributes
 {
-    public class KMLAttribute : Attribute
+    public class KMLMarkNameAttribute : Attribute
     {
-        public KMLAttribute(string name)
+        public KMLMarkNameAttribute(string name)
         {
             this.Name = name;
         }

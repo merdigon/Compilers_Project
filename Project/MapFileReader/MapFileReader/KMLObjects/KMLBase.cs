@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Compiler.Scanner.CharAnalizeLinks
+namespace MapFileReader.KMLObjects
 {
-    public class HeadLink : LinkBase
+    public class KMLBase
     {
-
     }
 }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace MapFileReader.KMLObjects
 {
     [KMLMarkClass]
-    public class PointKML : KMLBase
+    public class FileKML : KMLBase
     {
-        [KMLMarkNameAttribute("coordinates")]
-        public string Coordinate { get; set; }
+        [KMLMarkName("Placemark")]
+        public PlacemarkKML Placemark { get; set; }
     }
 }

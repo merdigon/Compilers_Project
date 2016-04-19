@@ -15,7 +15,7 @@ namespace MapFileReader.Tokens
             this.Value = value;
         }
 
-        public TokenDictionary Clone()
+        public object Clone()
         {
             return new TokenDictionary(Value);
         }
