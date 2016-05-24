@@ -13,6 +13,7 @@ namespace MapFileReader.KMLObjects
         [KMLMarkNameAttribute("name")]
         public string Name { get; set; }
         
+        [KMLMarkOptional]
         [KMLMarkNameAttribute("description")]
         public string Description { get; set; }
 
