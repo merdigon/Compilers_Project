@@ -46,6 +46,9 @@
   <ItemGroup>
     <Compile Include="Attributes\KMLMarkNameAttribute.cs" />
     <Compile Include="Attributes\KMLMarkClassAttribute.cs" />
+    <Compile Include="DTO\ParserResponse.cs" />
+    <Compile Include="Errors\ReaderError.cs" />
+    <Compile Include="Errors\ReaderErrorsType.cs" />
     <Compile Include="KMLObjects\FileKML.cs" />
     <Compile Include="KMLObjects\KMLBase.cs" />
     <Compile Include="KMLObjects\PlacemarkKML.cs" />

@@ -1,4 +1,5 @@
-﻿using MapFileReader.KMLObjects;
+﻿using MapFileReader.DTO;
+using MapFileReader.KMLObjects;
 using MapFileReader.Scanner;
 using MapFileReader.Tokens;
 using System;
@@ -19,9 +20,11 @@ namespace MapFileReader.Parser
             List<Token> tokens = scanner.GetTokensFromFile();
             tokens.ForEach(p => Console.WriteLine(p.TokenType.ToString() + " : " + p.Value + " : " + p.AdditionalInfo));
             KMLParser parser = new KMLParser(tokens);
-            XmlSerializer ser = new XmlSerializer(typeof(FileKML));
-            FileKML outputFile = parser.ParseTokens();
-            ser.Serialize(Console.Out, outputFile);
+            ParserResponse outputFile = parser.ParseTokens();
+            XmlSerializer ser = new XmlSerializer(outputFile.ResponseObject.GetType());
+            ser.Serialize(Console.Out, outputFile.ResponseObject);
+            Console.WriteLine(Environment.NewLine + Environment.NewLine + "Errory:");
+            outputFile.ResponseErrorList.ForEach(p => Console.WriteLine(string.Format("{0} => {1} : {2}", p.ErrorType.ToString(), p.Value, p.AdditionalInfo)));
             Console.ReadLine();
         }
     }
