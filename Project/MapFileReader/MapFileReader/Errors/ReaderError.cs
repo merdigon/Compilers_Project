@@ -2,42 +2,59 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MapFileReader.Errors
 {
+    [DataContract]
     public class ReaderError
     {
+        [DataMember]
         public ReaderErrorsType ErrorType
         {
             get
             {
                 return _errorType;
             }
+            set
+            {
+                _errorType = value;
+            }
         }
 
+        [DataMember]
         public string Value
         {
             get
             {
                 return _value;
             }
+            set
+            {
+                _value = value;
+            }
         }
 
+        [DataMember]
         public string AdditionalInfo
         {
             get
             {
                 return _additionalInfo;
             }
+            set
+            {
+                _additionalInfo = value;
+            }
         }
 
-        private readonly string _value;
+        private string _value;
 
-        private readonly ReaderErrorsType _errorType;
+        private ReaderErrorsType _errorType;
 
-        private readonly string _additionalInfo;
+        private string _additionalInfo;
 
         public ReaderError(Token token){
             this._errorType = ReaderErrorsType.SCANNER;

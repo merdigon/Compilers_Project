@@ -2,11 +2,6 @@
  * MapAnalyzer.cs
  *
  * THIS FILE HAS BEEN GENERATED AUTOMATICALLY. DO NOT EDIT!
- *
- * Permission is granted to copy this document verbatim in any
- * medium, provided that this copyright notice is left intact.
- *
- * Copyright (c) 2003 Per Cederberg. All rights reserved.
  */
 
 using PerCederberg.Grammatica.Runtime;
@@ -33,11 +28,11 @@ internal abstract class MapAnalyzer : Analyzer {
         case (int) MapConstants.PLACEMARK_C:
             EnterPlacemarkC((Token) node);
             break;
-        case (int) MapConstants.NAME_V:
-            EnterNameV((Token) node);
-            break;
         case (int) MapConstants.DESCRIPTION_V:
             EnterDescriptionV((Token) node);
+            break;
+        case (int) MapConstants.NAME_V:
+            EnterNameV((Token) node);
             break;
         case (int) MapConstants.POINT_O:
             EnterPointO((Token) node);
@@ -74,10 +69,10 @@ internal abstract class MapAnalyzer : Analyzer {
             return ExitPlacemarkO((Token) node);
         case (int) MapConstants.PLACEMARK_C:
             return ExitPlacemarkC((Token) node);
-        case (int) MapConstants.NAME_V:
-            return ExitNameV((Token) node);
         case (int) MapConstants.DESCRIPTION_V:
             return ExitDescriptionV((Token) node);
+        case (int) MapConstants.NAME_V:
+            return ExitNameV((Token) node);
         case (int) MapConstants.POINT_O:
             return ExitPointO((Token) node);
         case (int) MapConstants.POINT_C:
@@ -173,32 +168,6 @@ internal abstract class MapAnalyzer : Analyzer {
      * <exception cref='ParseException'>if the node analysis
      * discovered errors</exception>
      */
-    public virtual void EnterNameV(Token node) {
-    }
-
-    /**
-     * <summary>Called when exiting a parse tree node.</summary>
-     *
-     * <param name='node'>the node being exited</param>
-     *
-     * <returns>the node to add to the parse tree, or
-     *          null if no parse tree should be created</returns>
-     *
-     * <exception cref='ParseException'>if the node analysis
-     * discovered errors</exception>
-     */
-    public virtual Node ExitNameV(Token node) {
-        return node;
-    }
-
-    /**
-     * <summary>Called when entering a parse tree node.</summary>
-     *
-     * <param name='node'>the node being entered</param>
-     *
-     * <exception cref='ParseException'>if the node analysis
-     * discovered errors</exception>
-     */
     public virtual void EnterDescriptionV(Token node) {
     }
 
@@ -214,6 +183,32 @@ internal abstract class MapAnalyzer : Analyzer {
      * discovered errors</exception>
      */
     public virtual Node ExitDescriptionV(Token node) {
+        return node;
+    }
+
+    /**
+     * <summary>Called when entering a parse tree node.</summary>
+     *
+     * <param name='node'>the node being entered</param>
+     *
+     * <exception cref='ParseException'>if the node analysis
+     * discovered errors</exception>
+     */
+    public virtual void EnterNameV(Token node) {
+    }
+
+    /**
+     * <summary>Called when exiting a parse tree node.</summary>
+     *
+     * <param name='node'>the node being exited</param>
+     *
+     * <returns>the node to add to the parse tree, or
+     *          null if no parse tree should be created</returns>
+     *
+     * <exception cref='ParseException'>if the node analysis
+     * discovered errors</exception>
+     */
+    public virtual Node ExitNameV(Token node) {
         return node;
     }
 

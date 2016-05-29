@@ -13,19 +13,24 @@ namespace MapFileReader.Scanner
         private string Path { get; set; }
         private string ReadedFile { get; set; }
 
-        public KMLFileReader(string path)
+        public KMLFileReader()
         {
-            this.Path = path;
-            ReadFile();
         }
 
-        private void ReadFile()
+        public void ReadFile(string path)
         {
+            this.Path = path;
             using (StreamReader strReader = new StreamReader(Path))
             {
                 ReadedFile = strReader.ReadToEnd();
                 Position = 0;
             }
+        }
+
+        public void ReadString(string mapText)
+        {
+            ReadedFile = mapText;
+            Position = 0;
         }
 
         public int Read()

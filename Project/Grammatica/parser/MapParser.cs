@@ -2,11 +2,6 @@
  * MapParser.cs
  *
  * THIS FILE HAS BEEN GENERATED AUTOMATICALLY. DO NOT EDIT!
- *
- * Permission is granted to copy this document verbatim in any
- * medium, provided that this copyright notice is left intact.
- *
- * Copyright (c) 2003 Per Cederberg. All rights reserved.
  */
 
 using System.IO;
@@ -85,8 +80,8 @@ internal class MapParser : RecursiveDescentParser {
                                         "PLACEMARK_PROD");
         alt = new ProductionPatternAlternative();
         alt.AddToken((int) MapConstants.PLACEMARK_O, 1, 1);
-        alt.AddToken((int) MapConstants.NAME_V, 1, 1);
         alt.AddToken((int) MapConstants.DESCRIPTION_V, 0, 1);
+        alt.AddToken((int) MapConstants.NAME_V, 1, 1);
         alt.AddProduction((int) MapConstants.POINT_PROD, 1, 1);
         alt.AddToken((int) MapConstants.PLACEMARK_C, 1, 1);
         pattern.AddAlternative(alt);

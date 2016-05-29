@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="grammatica-1.6">
+      <HintPath>..\..\Grammatica\grammatica-1.6.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,6 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Grammatica\parser\MapAnalyzer.cs">
+      <Link>Grammatica\MapAnalyzer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Grammatica\parser\MapConstants.cs">
+      <Link>Grammatica\MapConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Grammatica\parser\MapParser.cs">
+      <Link>Grammatica\MapParser.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Grammatica\parser\MapTokenizer.cs">
+      <Link>Grammatica\MapTokenizer.cs</Link>
+    </Compile>
     <Compile Include="KMLObjectStackVersion.cs" />
     <Compile Include="KMLParser.cs" />
     <Compile Include="Program.cs" />

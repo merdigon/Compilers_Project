@@ -54,9 +54,14 @@ namespace GrammaGenerator
         private StringBuilder TransformTokenDictionaryListIntoStringBuilder(List<TokenDictionary> tokens)
         {
             StringBuilder strBuild = new StringBuilder();
+            strBuild.AppendLine("%header%");
+            strBuild.AppendLine();
+            strBuild.AppendLine("GRAMMARTYPE = \"LL\"");
+            strBuild.AppendLine();
             strBuild.AppendLine("%tokens%");
             strBuild.AppendLine();
             tokens.ForEach(p => strBuild.AppendLine(p.Value + " = \"" + p.Value + "\""));
+            strBuild.AppendLine("WHITESPACE                   = <<[ \\t\\n\\r]+>> %ignore%");
             strBuild.AppendLine();
             return strBuild;
         }

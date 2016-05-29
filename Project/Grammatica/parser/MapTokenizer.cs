@@ -2,11 +2,6 @@
  * MapTokenizer.cs
  *
  * THIS FILE HAS BEEN GENERATED AUTOMATICALLY. DO NOT EDIT!
- *
- * Permission is granted to copy this document verbatim in any
- * medium, provided that this copyright notice is left intact.
- *
- * Copyright (c) 2003 Per Cederberg. All rights reserved.
  */
 
 using System.IO;
@@ -55,16 +50,16 @@ internal class MapTokenizer : Tokenizer {
                                    "PLACEMARK_C");
         AddPattern(pattern);
 
-        pattern = new TokenPattern((int) MapConstants.NAME_V,
-                                   "NAME_V",
-                                   TokenPattern.PatternType.STRING,
-                                   "NAME_V");
-        AddPattern(pattern);
-
         pattern = new TokenPattern((int) MapConstants.DESCRIPTION_V,
                                    "DESCRIPTION_V",
                                    TokenPattern.PatternType.STRING,
                                    "DESCRIPTION_V");
+        AddPattern(pattern);
+
+        pattern = new TokenPattern((int) MapConstants.NAME_V,
+                                   "NAME_V",
+                                   TokenPattern.PatternType.STRING,
+                                   "NAME_V");
         AddPattern(pattern);
 
         pattern = new TokenPattern((int) MapConstants.POINT_O,
@@ -83,6 +78,13 @@ internal class MapTokenizer : Tokenizer {
                                    "COORDINATES_V",
                                    TokenPattern.PatternType.STRING,
                                    "COORDINATES_V");
+        AddPattern(pattern);
+
+        pattern = new TokenPattern((int) MapConstants.WHITESPACE,
+                                   "WHITESPACE",
+                                   TokenPattern.PatternType.REGEXP,
+                                   "[ \\t\\n\\r]+");
+        pattern.Ignore = true;
         AddPattern(pattern);
     }
 }

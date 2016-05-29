@@ -16,8 +16,9 @@ namespace MapFileReader.Parser
     {
         static void Main(string[] args)
         {
-            KMLScanner scanner = new KMLScanner(@"C:\Users\Szymon\Desktop\kmlExample.xml");
-            List<Token> tokens = scanner.GetTokensFromFile();
+            KMLScanner scanner = new KMLScanner();
+            scanner.SetFileReader(@"C:\Users\Szymon\Desktop\kmlExample.xml");
+            List<Token> tokens = scanner.GetTokens();
             tokens.ForEach(p => Console.WriteLine(p.TokenType.ToString() + " : " + p.Value + " : " + p.AdditionalInfo));
             KMLParser parser = new KMLParser(tokens);
             ParserResponse outputFile = parser.ParseTokens();

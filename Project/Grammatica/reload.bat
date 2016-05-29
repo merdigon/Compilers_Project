@@ -1,0 +1,1 @@
+java -jar grammatica-1.6.jar map.grammar --csoutput parser

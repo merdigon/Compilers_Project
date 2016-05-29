@@ -5,6 +5,7 @@ using MapFileReader.KMLObjects;
 using MapFileReader.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -24,8 +25,20 @@ namespace MapFileReader.Parser
 
         public ParserResponse ParseTokens()
         {
-            int listPointer = 0;
             ReaderErrorList = new List<ReaderError>();
+
+            try
+            {
+                string tokenListText = TransformTokenListIntoGrammaticaVersion();
+                MapParser parser = new MapParser(new StringReader(tokenListText));
+                var result = parser.Parse();
+            }
+            catch (PerCederberg.Grammatica.Runtime.ParserLogException plex)
+            {
+                ReaderErrorList.Add(new ReaderError(plex.Message, "GRAMMATICA-ERROR", ReaderErrorsType.PARSER));
+            }
+
+            int listPointer = 0;
             Stack<KMLObjectStackVersion> kmlObjectStack = new Stack<KMLObjectStackVersion>();
             kmlObjectStack.Push(new KMLObjectStackVersion() { KmlObject = new FileKML() } );
 
@@ -81,6 +94,35 @@ namespace MapFileReader.Parser
                 ResponseObject = kmlObjectStack.Pop().KmlObject,
                 ResponseErrorList = ReaderErrorList
             };
+        }
+
+        private string TransformTokenListIntoGrammaticaVersion()
+        {
+            string resultVersion = string.Empty;
+
+            for(int a=0; a<TokenList.Count(); a++)
+            {
+                Token token = TokenList[a];
+                if (token.TokenType == TokenType.OPENING)
+                {
+                    if (a + 1 < TokenList.Count())
+                    {
+                        if (TokenList[a + 1].TokenType == TokenType.VALUE) 
+                        { 
+                            resultVersion += token.Value.ToUpper() + "_V ";
+                            a = a + 2;
+                            continue;
+                        }
+                    }
+                    resultVersion += token.Value.ToUpper() + "_O ";
+                }
+                else if (token.TokenType == TokenType.CLOSING)
+                    resultVersion += token.Value.ToUpper() + "_C ";
+                else if (token.TokenType == TokenType.VALUE)
+                    resultVersion += token.Value.ToUpper() + "_V ";
+            }
+
+            return resultVersion;
         }
     }
 }

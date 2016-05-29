@@ -11,6 +11,7 @@ namespace MapFileReader.Scanner
     public class KMLScanner
     {
         private string FilePath { get; set; }
+        private string MapValue { get; set; }
         private KMLFileReader fileReader { get; set; }
         private List<TokenDictionary> tokenDictionaryList;
 
@@ -22,9 +23,8 @@ namespace MapFileReader.Scanner
             }
         }
 
-        public KMLScanner(string filePath)
+        public KMLScanner()
         {
-            this.FilePath = filePath;
             InitTokenDictList();
         }
 
@@ -33,11 +33,23 @@ namespace MapFileReader.Scanner
             tokenDictionaryList = new TokenDictListBuilder().CreateTokenList().GetTokenList();
         }
 
-        public List<Token> GetTokensFromFile()
+        public void SetFileReader(string path)
+        {
+            this.FilePath = path;
+            fileReader = new KMLFileReader();
+            fileReader.ReadFile(FilePath);
+        }
+
+        public void SetMapValue(string value)
+        {
+            this.MapValue = value;
+            fileReader = new KMLFileReader();
+            fileReader.ReadString(value);
+        }
+
+        public List<Token> GetTokens()
         {
             List<Token> tokensList = new List<Token>();
-            fileReader = new KMLFileReader(FilePath);
-            int filePointer = 0;
             Token returnToken;
             while ((returnToken = ReadToken()) != null)
             {
