@@ -23,7 +23,7 @@ namespace MapFileReader.Service
             var response = new KMLParser(tokens).ParseTokens();
             return new MapReaderResponse()
             {
-                KmlObject = (response.ResponseObject is PlacemarkKML ? new FileKML(){ Placemark = (PlacemarkKML)response.ResponseObject} : (FileKML)response.ResponseObject),
+                KmlObject = (response.ResponseObject is FolderKML ? new FileKML() { Folder = (FolderKML)response.ResponseObject } : (FileKML)response.ResponseObject),
                 Errors = response.ResponseErrorList
             };
         }

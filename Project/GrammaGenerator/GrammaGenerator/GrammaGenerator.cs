@@ -35,9 +35,9 @@ namespace GrammaGenerator
                     KMLMarkNameAttribute kmlAtribute = (KMLMarkNameAttribute)((object[])pinfo.GetCustomAttributes(true)).Where(p => p is KMLMarkNameAttribute).FirstOrDefault();
                     if (kmlAtribute != null)
                     {
-                        if (!tokenList.Select(p => p.Value).Contains(kmlAtribute.Name+"_V") && !tokenList.Select(p => p.Value).Contains(kmlAtribute.Name+"_O"))
+                        if (tokenList.Select(p => p.Value).Count(p => p.Equals(kmlAtribute.Name.ToUpper() + "_V")) < 1 && tokenList.Select(p => p.Value).Count(p => p.Equals(kmlAtribute.Name.ToUpper() + "_O")) < 1)
                         {
-                            if (pinfo.PropertyType.BaseType == typeof(KMLBase))
+                            if (pinfo.PropertyType.BaseType == typeof(KMLBase) || (pinfo.PropertyType.GenericTypeArguments != null && pinfo.PropertyType.GenericTypeArguments.Count() > 0 && pinfo.PropertyType.GenericTypeArguments[0].BaseType == typeof(KMLBase)))
                             {
                                 tokenList.Add(new TokenDictionary(kmlAtribute.Name.ToUpper() + "_O"));
                                 tokenList.Add(new TokenDictionary(kmlAtribute.Name.ToUpper() + "_C"));
@@ -72,7 +72,7 @@ namespace GrammaGenerator
             globProd.AppendLine("%productions%");
             globProd.AppendLine();
             Stack<ProdNode> prodToDo = new Stack<ProdNode>();
-            prodToDo.Push(new ProdNode(){ ProdName="PLACEMARK", ProdTokenType=typeof(PlacemarkKML) });
+            prodToDo.Push(new ProdNode(){ ProdName="FOLDER", ProdTokenType=typeof(FolderKML) });
 
             while(prodToDo.Count > 0)
             {
@@ -93,8 +93,19 @@ namespace GrammaGenerator
                     {
                         if (pinfo.PropertyType.BaseType == typeof(KMLBase))
                         {
-                            oneProd.Append(kmlAtribute.Name.ToUpper() + "_PROD ");
+                            if (((object[])pinfo.GetCustomAttributes(true)).Where(p => p is KMLMarkGroupFieldAttribute).FirstOrDefault() != null)
+                                oneProd.Append("{" + kmlAtribute.Name.ToUpper() + "_PROD} ");
+                            else if (pinfo.GetCustomAttributes(true).Where(p => p is KMLMarkOptionalAttribute).FirstOrDefault() != null)
+                                oneProd.Append("[" + kmlAtribute.Name.ToUpper() + "_PROD] ");
+                            else
+                                oneProd.Append(kmlAtribute.Name.ToUpper() + "_PROD ");
                             prodToDo.Push(new ProdNode() { ProdName = kmlAtribute.Name.ToUpper(), ProdTokenType = pinfo.PropertyType });
+                        }
+                        else if ((pinfo.PropertyType.GenericTypeArguments != null && pinfo.PropertyType.GenericTypeArguments.Count() > 0 && pinfo.PropertyType.GenericTypeArguments[0].BaseType == typeof(KMLBase)))
+                        {
+                            if (((object[])pinfo.GetCustomAttributes(true)).Where(p => p is KMLMarkGroupFieldAttribute).FirstOrDefault() != null)
+                                oneProd.Append("{" + kmlAtribute.Name.ToUpper() + "_PROD} ");
+                            prodToDo.Push(new ProdNode() { ProdName = kmlAtribute.Name.ToUpper(), ProdTokenType = pinfo.PropertyType.GenericTypeArguments[0] });
                         }
                         else
                         {

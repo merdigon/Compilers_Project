@@ -22,8 +22,14 @@ namespace MapFileReader.Parser
             tokens.ForEach(p => Console.WriteLine(p.TokenType.ToString() + " : " + p.Value + " : " + p.AdditionalInfo));
             KMLParser parser = new KMLParser(tokens);
             ParserResponse outputFile = parser.ParseTokens();
-            XmlSerializer ser = new XmlSerializer(outputFile.ResponseObject.GetType());
-            ser.Serialize(Console.Out, outputFile.ResponseObject);
+            if (outputFile.ResponseObject != null)
+            {
+                XmlSerializer ser = new XmlSerializer(outputFile.ResponseObject.GetType());
+                ser.Serialize(Console.Out, outputFile.ResponseObject);
+            }
+            else
+                Console.WriteLine("Result: null");
+
             Console.WriteLine(Environment.NewLine + Environment.NewLine + "Errory:");
             outputFile.ResponseErrorList.ForEach(p => Console.WriteLine(string.Format("{0} => {1} : {2}", p.ErrorType.ToString(), p.Value, p.AdditionalInfo)));
             Console.ReadLine();

@@ -76,14 +76,34 @@ internal class MapParser : RecursiveDescentParser {
         ProductionPattern             pattern;
         ProductionPatternAlternative  alt;
 
+        pattern = new ProductionPattern((int) MapConstants.FOLDER_PROD,
+                                        "FOLDER_PROD");
+        alt = new ProductionPatternAlternative();
+        alt.AddToken((int) MapConstants.FOLDER_O, 1, 1);
+        alt.AddProduction((int) MapConstants.PLACEMARK_PROD, 0, -1);
+        alt.AddToken((int) MapConstants.FOLDER_C, 1, 1);
+        pattern.AddAlternative(alt);
+        AddPattern(pattern);
+
         pattern = new ProductionPattern((int) MapConstants.PLACEMARK_PROD,
                                         "PLACEMARK_PROD");
         alt = new ProductionPatternAlternative();
         alt.AddToken((int) MapConstants.PLACEMARK_O, 1, 1);
-        alt.AddToken((int) MapConstants.DESCRIPTION_V, 0, 1);
         alt.AddToken((int) MapConstants.NAME_V, 1, 1);
-        alt.AddProduction((int) MapConstants.POINT_PROD, 1, 1);
+        alt.AddToken((int) MapConstants.DESCRIPTION_V, 0, 1);
+        alt.AddProduction((int) MapConstants.POINT_PROD, 0, 1);
+        alt.AddProduction((int) MapConstants.LINESTRING_PROD, 0, 1);
         alt.AddToken((int) MapConstants.PLACEMARK_C, 1, 1);
+        pattern.AddAlternative(alt);
+        AddPattern(pattern);
+
+        pattern = new ProductionPattern((int) MapConstants.LINESTRING_PROD,
+                                        "LINESTRING_PROD");
+        alt = new ProductionPatternAlternative();
+        alt.AddToken((int) MapConstants.LINESTRING_O, 1, 1);
+        alt.AddToken((int) MapConstants.TESSELLATE_V, 0, 1);
+        alt.AddToken((int) MapConstants.COORDINATES_V, 1, 1);
+        alt.AddToken((int) MapConstants.LINESTRING_C, 1, 1);
         pattern.AddAlternative(alt);
         AddPattern(pattern);
 

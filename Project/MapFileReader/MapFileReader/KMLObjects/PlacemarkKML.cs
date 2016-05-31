@@ -13,16 +13,22 @@ namespace MapFileReader.KMLObjects
     public class PlacemarkKML : KMLBase
     {
         [DataMember]
+        [KMLMarkNameAttribute("name")]
+        public string Name { get; set; }
+
+        [DataMember]
         [KMLMarkOptional]
         [KMLMarkNameAttribute("description")]
         public string Description { get; set; }
 
         [DataMember]
-        [KMLMarkNameAttribute("name")]
-        public string Name { get; set; }
-
-        [DataMember]
+        [KMLMarkOptional]
         [KMLMarkNameAttribute("Point")]
         public PointKML Point { get; set; }
+        
+        [DataMember]
+        [KMLMarkOptional]
+        [KMLMarkNameAttribute("LineString")]
+        public LineStringKML LineString { get; set; }
     }
 }

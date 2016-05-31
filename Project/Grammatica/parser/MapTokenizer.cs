@@ -38,6 +38,18 @@ internal class MapTokenizer : Tokenizer {
     private void CreatePatterns() {
         TokenPattern  pattern;
 
+        pattern = new TokenPattern((int) MapConstants.FOLDER_O,
+                                   "FOLDER_O",
+                                   TokenPattern.PatternType.STRING,
+                                   "FOLDER_O");
+        AddPattern(pattern);
+
+        pattern = new TokenPattern((int) MapConstants.FOLDER_C,
+                                   "FOLDER_C",
+                                   TokenPattern.PatternType.STRING,
+                                   "FOLDER_C");
+        AddPattern(pattern);
+
         pattern = new TokenPattern((int) MapConstants.PLACEMARK_O,
                                    "PLACEMARK_O",
                                    TokenPattern.PatternType.STRING,
@@ -50,16 +62,28 @@ internal class MapTokenizer : Tokenizer {
                                    "PLACEMARK_C");
         AddPattern(pattern);
 
-        pattern = new TokenPattern((int) MapConstants.DESCRIPTION_V,
-                                   "DESCRIPTION_V",
+        pattern = new TokenPattern((int) MapConstants.TESSELLATE_V,
+                                   "TESSELLATE_V",
                                    TokenPattern.PatternType.STRING,
-                                   "DESCRIPTION_V");
+                                   "TESSELLATE_V");
+        AddPattern(pattern);
+
+        pattern = new TokenPattern((int) MapConstants.COORDINATES_V,
+                                   "COORDINATES_V",
+                                   TokenPattern.PatternType.STRING,
+                                   "COORDINATES_V");
         AddPattern(pattern);
 
         pattern = new TokenPattern((int) MapConstants.NAME_V,
                                    "NAME_V",
                                    TokenPattern.PatternType.STRING,
                                    "NAME_V");
+        AddPattern(pattern);
+
+        pattern = new TokenPattern((int) MapConstants.DESCRIPTION_V,
+                                   "DESCRIPTION_V",
+                                   TokenPattern.PatternType.STRING,
+                                   "DESCRIPTION_V");
         AddPattern(pattern);
 
         pattern = new TokenPattern((int) MapConstants.POINT_O,
@@ -74,10 +98,16 @@ internal class MapTokenizer : Tokenizer {
                                    "POINT_C");
         AddPattern(pattern);
 
-        pattern = new TokenPattern((int) MapConstants.COORDINATES_V,
-                                   "COORDINATES_V",
+        pattern = new TokenPattern((int) MapConstants.LINESTRING_O,
+                                   "LINESTRING_O",
                                    TokenPattern.PatternType.STRING,
-                                   "COORDINATES_V");
+                                   "LINESTRING_O");
+        AddPattern(pattern);
+
+        pattern = new TokenPattern((int) MapConstants.LINESTRING_C,
+                                   "LINESTRING_C",
+                                   TokenPattern.PatternType.STRING,
+                                   "LINESTRING_C");
         AddPattern(pattern);
 
         pattern = new TokenPattern((int) MapConstants.WHITESPACE,

@@ -10,10 +10,11 @@ namespace MapFileReader.KMLObjects
 {
     [DataContract]
     [KMLMarkClass]
-    public class FileKML : KMLBase
+    public class FolderKML : KMLBase
     {
         [DataMember]
-        [KMLMarkName("Folder")]
-        public FolderKML Folder { get; set; }
+        [KMLMarkName("Placemark")]
+        [KMLMarkGroupField]
+        public List<PlacemarkKML> Placemark { get; set; }
     }
 }

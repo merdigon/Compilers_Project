@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\KMLMarkGroupFieldAttribute.cs" />
     <Compile Include="Attributes\KMLMarkNameAttribute.cs" />
     <Compile Include="Attributes\KMLMarkClassAttribute.cs" />
     <Compile Include="DTO\ParserResponse.cs" />
@@ -52,7 +53,9 @@
     <Compile Include="Errors\ReaderErrorsType.cs" />
     <Compile Include="Attributes\KMLMarkOptionalAttribute.cs" />
     <Compile Include="KMLObjects\FileKML.cs" />
+    <Compile Include="KMLObjects\FolderKML.cs" />
     <Compile Include="KMLObjects\KMLBase.cs" />
+    <Compile Include="KMLObjects\LineStringKML.cs" />
     <Compile Include="KMLObjects\PlacemarkKML.cs" />
     <Compile Include="KMLObjects\PointKML.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
