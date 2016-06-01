@@ -140,6 +140,10 @@ namespace MapFileReader.Scanner
                         fileReader.MovePointer(-1);
                         return new Token() { TokenType = TokenType.VALUE, Value = value };
                     }
+                    else if ("\r".Contains((char)buffer))
+                    {
+                        value += ";";
+                    }
                     else
                     {
                         value += ((char)buffer).ToString();
