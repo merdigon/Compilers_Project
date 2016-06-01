@@ -1,13 +1,13 @@
 <Folder>
 <Placemark>
 <name>Warszawa</name>
-<description>Ma³o ciekawe miasto</description>
+<description>Malo ciekawe miasto</description>
 <Point>
  <coordinates>-73.87560600000001,40.858599,25.90800000000001</coordinates>
  </Point>
 </Placemark>
 <Placemark>
-<name>Kraków</name>
+<name>Krakow</name>
 <description>Bardzo ciekawe miasto</description>
 <LineString>
  <tessellate>1</tessellate>
